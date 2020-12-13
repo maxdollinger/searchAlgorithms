@@ -25,24 +25,22 @@ function sortingTest(sortingFunction, maxLength) {
     const shuffledArr = shuffleArray(arr);
     const sortedArr = sortingFunction([...shuffledArr]);
 
-    for(let i = 0; i < arrLength; i++) {
-        if(arr[i] !== sortedArr[i]) {
-            console.log('sorted Array:');
-            console.log(arr.toString());
-            console.log('shuffled Array:');
-            console.log(shuffledArr.toString());
-            console.log('sorted with function:');
-            console.log(sortedArr.toString());
-            console.log('failed at index: ' + i);
-            return false;
-        }
+    if(arr.toString() !== sortedArr.toString()){
+        console.log('sorted Array:');
+        console.log(arr.toString());
+        console.log('shuffled Array:');
+        console.log(shuffledArr.toString());
+        console.log('sorted with function:');
+        console.log(sortedArr.toString());
+        return false;
     }
 
     return true;
 }
 
 function testing(sortingFunction, maxLength) {
-    for(let i = 0; i < 100; i++) {
+    maxLength = maxLength || 25;
+    for(let i = 1; i <= 50; i++) {
         if(!sortingTest(sortingFunction, maxLength)) return false;
     }
 
