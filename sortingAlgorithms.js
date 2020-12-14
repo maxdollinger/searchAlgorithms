@@ -59,7 +59,7 @@ function insertionSort(arr) {
 
 //The 3 above are working well on small data sets
 
-//Merge Sort: faster on big data sets but greater space complexity
+//Merge Sort: faster on big data sets but greater space complexity, is stable
 function mergeSort(arr) {
     if(arr.length <= 1) return arr;
     let middle = Math.floor(arr.length / 2);
@@ -89,6 +89,35 @@ function merge(arrOne, arrTwo) {
     }
 
     return arr;
+}
+
+//This implementation has a worst case of O(n²) time complexity if the array is already sorted
+//but has O(log n) space complexity
+function quickSort(arr, start = 0, end = arr.length-1) {
+
+    if(start < end) {
+        let index = sort(arr, start, end);
+        quickSort(arr, start, index-1);
+        quickSort(arr, index+1, end);
+    }
+
+    return arr;
+}
+
+function sort(arr, start, end) {
+    let smallerIndex = start;
+
+    const swap = (arr,i, j) => [arr[i], arr[j]] = [arr[j], arr[i]];
+
+    for(let i = start; i <= end; i++) {
+        if(arr[i] < arr[start]) {
+            smallerIndex++;
+            swap(arr, i, smallerIndex);
+        }
+    }
+    swap(arr, start, smallerIndex);
+
+    return smallerIndex;
 }
 
 
