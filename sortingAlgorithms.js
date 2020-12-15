@@ -1,6 +1,6 @@
 //Pro: If data is nearly sorted only view swaps
 //Con: On random data a lot iterations needed
-function bubbleSort(arr) {
+exports.bubbleSort = (arr) => {
     const swap = (arr, idx1, idx2) => {
         [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]
     };
@@ -19,11 +19,11 @@ function bubbleSort(arr) {
         if (noSwaps) break;
     }
     return arr;
-}
+};
 
 //Pro: - (easy to understand)
 //Con: slow in every scenario
-function selectionSort(arr) {
+exports.selectionSort = (arr) => {
     const swap = (arr, idx1, idx2) => {
         [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]
     };
@@ -43,7 +43,7 @@ function selectionSort(arr) {
 
 //Pro: if arr is nearly sorted or when sorting on streams
 //Con: slow if arr is reversed or data is random
-function insertionSort(arr) {
+exports.insertionSort = (arr) => {
 
     for (let i = 1; i < arr.length; i++) {
 
@@ -60,10 +60,11 @@ function insertionSort(arr) {
 //The 3 above are working well on small data sets
 
 //Merge Sort: faster on big data sets but greater space complexity, is stable
-function mergeSort(arr) {
+exports.mergeSort = (arr) => {
     if(arr.length <= 1) return arr;
     let middle = Math.floor(arr.length / 2);
-    return merge(mergeSort(arr.slice(0,middle)), mergeSort(arr.slice(middle)));
+
+    return merge(exports.mergeSort(arr.slice(0,middle)), exports.mergeSort(arr.slice(middle)));
 }
 
 function merge(arrOne, arrTwo) {
@@ -91,9 +92,10 @@ function merge(arrOne, arrTwo) {
     return arr;
 }
 
+
 //This implementation has a worst case of O(n²) time complexity if the array is already sorted
 //but has O(log n) space complexity
-function quickSort(arr, start = 0, end = arr.length-1) {
+exports.quickSort = (arr, start = 0, end = arr.length-1) => {
 
     if(start < end) {
         let index = sort(arr, start, end);
