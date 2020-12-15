@@ -1,4 +1,4 @@
-const {input, expected} = require('./createSortedAndShuffledArr')();
+const {input, expected} = require('./createArrays')();
 //testing mergeSort
 const sortingFunc = { mergeSort } = require('./sortingAlgorithms');
 
