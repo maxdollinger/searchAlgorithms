@@ -1,4 +1,5 @@
 const {input, expected} = require('./createSortedAndShuffledArr')();
+//testing mergeSort
 const sortingFunc = { mergeSort } = require('./sortingAlgorithms');
 
 //Simple unit-test useing jest
